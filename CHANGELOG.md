@@ -25,7 +25,7 @@
 * [Changelog for 2.18.1](#changelog-for-owncloud-android-client-2181-2021-07-20)
 * [Changelog for 2.18.0](#changelog-for-owncloud-android-client-2180-2021-05-24)
 * [Changelog for 2.17 versions and below](#changelog-for-217-versions-and-below)
-# Changelog for ownCloud Android Client [unreleased] (UNRELEASED)
+# Changelog for SparkShareSync Android Client [unreleased] (UNRELEASED)
 
 The following sections list the changes in ownCloud Android Client unreleased relevant to
 ownCloud admins and users.
