@@ -41,6 +41,7 @@
             android:id="@+id/root_toolbar_search_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="@drawable/rounded_search_view"
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/standard_half_padding"
             android:visibility="gone"
@@ -49,29 +50,28 @@
             app:layout_constraintStart_toEndOf="@id/root_toolbar_left_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:queryHint="@string/actionbar_search"
-            android:background="@drawable/rounded_search_view"
             app:searchHintIcon="@null" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/root_toolbar_title"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/standard_margin"
             android:layout_marginEnd="@dimen/standard_half_margin"
+            android:layout_marginStart="@dimen/standard_margin"
+            android:contentDescription="@string/content_description_search"
             android:ellipsize="end"
             android:gravity="center_vertical"
             android:maxLines="1"
             android:paddingHorizontal="@dimen/standard_half_padding"
             android:textColor="@color/white"
             android:textSize="@dimen/toolbar_title_text_size"
-            android:contentDescription="@string/content_description_search"
             app:drawableEndCompat="@drawable/ic_search"
             app:drawableTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/root_toolbar_avatar"
             app:layout_constraintStart_toEndOf="@id/root_toolbar_left_icon"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="ownCloud" />
+            tools:text="Spark ShareSync" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/root_toolbar_avatar"

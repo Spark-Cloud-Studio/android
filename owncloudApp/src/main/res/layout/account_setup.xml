@@ -29,9 +29,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:src="@drawable/login_background_image"
-        android:visibility="gone"
-        tools:ignore="ContentDescription"
-        tools:visibility="visible" />
+        tools:ignore="ContentDescription" />
 
     <ScrollView
         android:id="@+id/scroll"
@@ -43,7 +41,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="visible">
 
             <LinearLayout
                 android:id="@+id/layout_login"
@@ -73,6 +72,30 @@
                     android:orientation="vertical"
                     android:visibility="gone">
 
+                    <TextView
+                        android:id="@+id/webfinger_status_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/auth_testing_connection"
+                        android:drawablePadding="5dp"
+                        android:drawableStart="@android:drawable/stat_notify_sync"
+                        android:gravity="center_vertical"
+                        android:minHeight="32dp"
+                        android:textColor="@color/login_connection_text_color"
+                        android:visibility="gone"
+                        app:drawableTint="@color/login_connection_text_color"
+                        tools:text="@string/auth_testing_connection" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/webfinger_button"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/global_proceed"
+                        android:text="@string/global_proceed"
+                        android:theme="@style/Button.Authenticator" />
+
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/webfinger_username_container"
                         android:layout_width="match_parent"
@@ -92,30 +115,6 @@
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <TextView
-                        android:id="@+id/webfinger_status_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:contentDescription="@string/auth_testing_connection"
-                        android:drawableStart="@android:drawable/stat_notify_sync"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:minHeight="32dp"
-                        android:textColor="@color/login_connection_text_color"
-                        android:visibility="gone"
-                        app:drawableTint="@color/login_connection_text_color"
-                        tools:text="@string/auth_testing_connection" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/webfinger_button"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@string/global_proceed"
-                        android:text="@string/global_proceed"
-                        android:theme="@style/Button.Authenticator" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -123,28 +122,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/centeredRefreshButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="10dp"
-                        android:contentDescription="@string/auth_check_server"
-                        android:text="@string/auth_check_server"
-                        android:theme="@style/Button.Authenticator"
-                        android:visibility="gone" />
-
-                    <TextView
-                        android:id="@+id/instructions_message"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="fill_horizontal"
-                        android:layout_marginBottom="10dp"
-                        android:contentDescription="@string/auth_expired_basic_auth_toast"
-                        android:text="@string/auth_expired_basic_auth_toast"
-                        android:textColor="@color/login_text_color"
-                        android:visibility="gone" />
 
                     <FrameLayout
                         android:id="@+id/hostUrlFrame"
@@ -196,19 +173,65 @@
                     </FrameLayout>
 
                     <TextView
+                        android:id="@+id/instructions_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/auth_expired_basic_auth_toast"
+                        android:text="@string/auth_expired_basic_auth_toast"
+                        android:textColor="@color/login_text_color"
+                        android:visibility="gone" />
+
+                    <TextView
                         android:id="@+id/server_status_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:contentDescription="@string/auth_testing_connection"
-                        android:drawableStart="@android:drawable/stat_notify_sync"
                         android:drawablePadding="5dp"
+                        android:drawableStart="@android:drawable/stat_notify_sync"
                         android:gravity="center_vertical"
                         android:minHeight="32dp"
                         android:textColor="@color/login_connection_text_color"
                         android:visibility="invisible"
                         app:drawableTint="@color/login_connection_text_color"
                         tools:text="@string/auth_testing_connection"
+                        tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/auth_status_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/auth_unauthorized"
+                        android:drawablePadding="5dp"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/login_credentials_text_color"
+                        android:visibility="gone"
+                        app:drawableTint="@color/login_credentials_text_color"
+                        tools:text="@string/auth_unauthorized" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/centeredRefreshButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="10dp"
+                        android:contentDescription="@string/auth_check_server"
+                        android:text="@string/auth_check_server"
+                        android:theme="@style/Button.Authenticator"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/loginButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/setup_btn_login"
+                        android:text="@string/setup_btn_login"
+                        android:theme="@style/Button.Authenticator"
+                        android:visibility="gone"
                         tools:visibility="visible" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -252,30 +275,6 @@
 
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
-
-                    <TextView
-                        android:id="@+id/auth_status_text"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:contentDescription="@string/auth_unauthorized"
-                        android:drawablePadding="5dp"
-                        android:gravity="center_vertical"
-                        android:textColor="@color/login_credentials_text_color"
-                        android:visibility="gone"
-                        app:drawableTint="@color/login_credentials_text_color"
-                        tools:text="@string/auth_unauthorized" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/loginButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:contentDescription="@string/setup_btn_login"
-                        android:text="@string/setup_btn_login"
-                        android:theme="@style/Button.Authenticator"
-                        android:visibility="gone"
-                        tools:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -290,8 +289,8 @@
                         android:background="@android:color/transparent"
                         android:contentDescription="@string/auth_register"
                         android:gravity="center"
-                        android:paddingTop="5dp"
                         android:paddingBottom="5dp"
+                        android:paddingTop="5dp"
                         android:text="@string/auth_register"
                         android:textColor="@color/login_text_color" />
                 </LinearLayout>
@@ -301,8 +300,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/standard_margin"
                 android:layout_marginBottom="@dimen/standard_margin"
+                android:layout_marginEnd="@dimen/standard_margin"
                 android:gravity="end"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
